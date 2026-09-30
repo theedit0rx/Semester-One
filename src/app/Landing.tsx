@@ -20,6 +20,26 @@ export default function Landing({ onTools }: { onTools: (tab?: string) => void }
   const done = topics.filter(({ topic }) => completed.includes(topic.id)).length;
   const hits = React.useMemo(() => searchBook(query), [query]);
   React.useEffect(() => { isOfflineReady().then(setReady); }, []);
+  /* ambient interaction layer */
+  React.useEffect(() => {
+    const root = document.querySelector<HTMLElement>('.semester-home');
+    if (!root) return;
+    const move = (e: PointerEvent) => {
+      root.style.setProperty('--px', `${(e.clientX / window.innerWidth) * 100}%`);
+      root.style.setProperty('--py', `${(e.clientY / window.innerHeight) * 100}%`);
+    };
+    const scroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      root.style.setProperty('--study-scroll', `${max > 0 ? (window.scrollY / max) * 100 : 0}%`);
+    };
+    window.addEventListener('pointermove', move, { passive: true });
+    window.addEventListener('scroll', scroll, { passive: true });
+    scroll();
+    return () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('scroll', scroll);
+    };
+  }, []);
   const install = async () => {
     setBusy(true);
     try {
