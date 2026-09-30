@@ -4,3 +4,214 @@
 @media(max-width:1000px){.semester-nav nav{gap:15px}.semester-hero{gap:20px}.semester-stats{gap:20px}.semester-scene{height:410px}.resume-progress{width:150px}.semester-resume{gap:15px}.chapter-door{padding:14px}.semester-workbench{gap:30px}.physics-volume{width:185px;height:270px}.volume-cover>p{font-size:31px}.floating-equation{font-size:20px}.book-halo{width:250px;height:250px}}
 @media(max-width:720px){.semester-home{padding:0 6% 95px}.semester-nav{height:80px}.semester-nav nav{display:none}.semester-search span{display:none}.semester-search{padding:12px}.semester-hero{grid-template-columns:1fr;padding:37px 0 28px;gap:30px}.semester-intro h1{font-size:48px}.semester-eyebrow{font-size:8px}.semester-description{font-size:13px}.semester-stats{justify-content:space-between}.semester-actions{gap:20px}.semester-primary{font-size:12px;padding:15px}.semester-scene{height:360px;max-width:460px;width:100%;margin:auto}.physics-volume{width:180px;height:253px}.volume-cover>p{font-size:29px}.volume-orbit i{width:60px;height:60px}.volume-bottom{margin-top:10px}.scene-caption{top:18px}.scene-bottom{bottom:10px}.semester-resume{flex-wrap:wrap;padding:20px}.semester-resume>div:nth-child(2){flex:1}.resume-progress{width:100%;order:4}.semester-resume .semester-link{margin-left:60px;min-height:30px}.semester-section-title{align-items:start}.semester-section-title h2,.semester-workbench h2{font-size:29px}.semester-section-title>.semester-link{font-size:10px;max-width:95px}.semester-chapters{padding:40px 0}.chapter-grid{grid-template-columns:1fr 1fr;gap:10px}.chapter-door h3{font-size:18px;min-height:65px}.door-art{height:110px}.door-art span{font-size:6px}.semester-workbench{grid-template-columns:1fr;padding:35px 0}.workbench-grid button{min-height:136px}.semester-offline{padding:20px}.semester-offline .offline-actions{flex-wrap:wrap;gap:10px}.semester-footer{flex-direction:column;align-items:start}.semester-footer>div{flex-wrap:wrap}.semester-stats span{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.semester-home *{animation:none!important;transition:none!important}}
+
+
+/* ===== 2026 cinematic study pass ===== */
+.semester-home{
+  --px:70%;
+  --py:18%;
+  --study-scroll:0%;
+  position:relative;
+  isolation:isolate;
+  background-image:
+    radial-gradient(620px circle at var(--px) var(--py),color-mix(in srgb,var(--accent) 10%,transparent),transparent 46%),
+    radial-gradient(520px circle at 12% 42%,color-mix(in srgb,var(--accent-2) 4%,transparent),transparent 54%);
+  background-attachment:fixed;
+}
+.semester-home::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.24;
+  background-image:
+    radial-gradient(circle at 18% 14%,var(--star) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 68% 26%,var(--star) 0 1px,transparent 1.3px),
+    radial-gradient(circle at 42% 76%,var(--star) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 88% 68%,var(--star) 0 1px,transparent 1.2px);
+  background-size:190px 190px,250px 250px,310px 310px,220px 220px;
+  animation:semester-stars 18s linear infinite;
+}
+.semester-nav{
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:color-mix(in srgb,var(--bg) 76%,transparent);
+  backdrop-filter:blur(18px) saturate(145%);
+  -webkit-backdrop-filter:blur(18px) saturate(145%);
+  box-shadow:0 18px 55px rgba(0,0,0,.12);
+}
+.semester-nav::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  height:2px;
+  width:var(--study-scroll);
+  background:linear-gradient(90deg,var(--accent),var(--accent-3),var(--accent-2));
+  box-shadow:0 0 18px rgba(var(--glow),.55);
+  transition:width .08s linear;
+}
+.semester-brand>span{
+  box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 25%,transparent),0 0 24px color-mix(in srgb,var(--accent) 14%,transparent);
+  animation:semester-brand-pulse 4.8s ease-in-out infinite;
+}
+.semester-intro h1 em{
+  background:linear-gradient(100deg,var(--accent),#fff 48%,var(--accent-2) 80%,var(--accent));
+  background-size:230% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:semester-title-sheen 7s ease-in-out infinite;
+}
+.semester-primary{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  box-shadow:0 16px 42px color-mix(in srgb,var(--accent) 19%,transparent);
+}
+.semester-primary::after{
+  content:"";
+  position:absolute;
+  top:-120%;
+  left:-42%;
+  width:28%;
+  height:340%;
+  transform:rotate(23deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);
+  transition:left .72s cubic-bezier(.2,.8,.2,1);
+  z-index:-1;
+}
+.semester-primary:hover::after{left:125%}
+.semester-scene{
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s ease,border-color .35s ease;
+  box-shadow:0 38px 100px rgba(0,0,0,.21),inset 0 0 60px color-mix(in srgb,var(--accent) 4%,transparent);
+}
+.semester-scene::before{
+  content:"";
+  position:absolute;
+  inset:-35%;
+  pointer-events:none;
+  background:conic-gradient(from 90deg,transparent,color-mix(in srgb,var(--accent) 10%,transparent),transparent 26%,color-mix(in srgb,var(--accent-2) 7%,transparent),transparent 62%);
+  animation:semester-aurora 18s linear infinite;
+}
+.semester-scene:hover{
+  transform:translateY(-8px) rotateX(1.5deg) rotateY(1.5deg);
+  border-color:color-mix(in srgb,var(--accent) 48%,transparent);
+  box-shadow:0 52px 125px rgba(0,0,0,.3),0 0 70px color-mix(in srgb,var(--accent) 12%,transparent);
+}
+.physics-volume{
+  filter:drop-shadow(0 32px 28px rgba(0,0,0,.35));
+}
+.book-halo{
+  box-shadow:0 0 70px color-mix(in srgb,var(--accent) 11%,transparent);
+  animation:semester-halo-spin 16s linear infinite;
+}
+.floating-equation{
+  text-shadow:0 0 20px color-mix(in srgb,var(--accent) 40%,transparent);
+}
+.semester-resume{
+  position:relative;
+  overflow:hidden;
+  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+.semester-resume::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,color-mix(in srgb,var(--accent) 7%,transparent),transparent 36%,color-mix(in srgb,var(--accent-2) 5%,transparent));
+}
+.semester-resume:hover{
+  transform:translateY(-4px);
+  border-color:color-mix(in srgb,var(--accent) 42%,transparent);
+  box-shadow:0 26px 65px rgba(0,0,0,.17);
+}
+.resume-progress progress{
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--accent) 55%,transparent));
+}
+.chapter-door{
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:transform .42s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .42s ease;
+}
+.chapter-door::before,.workbench-grid button::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 10%,transparent),transparent 35%,color-mix(in srgb,var(--accent-2) 6%,transparent));
+  transition:opacity .35s ease;
+}
+.chapter-door:hover{
+  transform:translateY(-9px) rotateX(2deg);
+  box-shadow:0 30px 70px rgba(0,0,0,.22),0 0 0 1px color-mix(in srgb,var(--accent) 15%,transparent);
+}
+.chapter-door:hover::before,.workbench-grid button:hover::before{opacity:1}
+.door-art{
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),text-shadow .35s ease;
+}
+.chapter-door:hover .door-art{
+  transform:translateY(-5px) scale(1.045);
+  text-shadow:0 0 26px color-mix(in srgb,currentColor 40%,transparent);
+}
+.workbench-grid button{
+  overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .35s ease;
+}
+.workbench-grid button:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 55px rgba(0,0,0,.17);
+}
+.concept-search{
+  transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;
+}
+.concept-search:focus-within{
+  border-color:color-mix(in srgb,var(--accent) 70%,transparent);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 8%,transparent),0 18px 50px rgba(0,0,0,.12);
+  transform:translateY(-2px);
+}
+.semester-offline{
+  position:relative;
+  overflow:hidden;
+}
+.semester-offline::after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  right:-90px;
+  top:-120px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 15%,transparent),transparent 67%);
+  animation:semester-breathe 7s ease-in-out infinite;
+}
+@keyframes semester-title-sheen{
+  0%,20%{background-position:115% 0}
+  60%,100%{background-position:-75% 0}
+}
+@keyframes semester-stars{
+  to{background-position:190px 95px,-125px 250px,155px -155px,-110px 110px}
+}
+@keyframes semester-brand-pulse{
+  50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 0%,transparent),0 0 34px color-mix(in srgb,var(--accent) 23%,transparent)}
+}
+@keyframes semester-aurora{to{transform:rotate(360deg)}}
+@keyframes semester-halo-spin{to{transform:rotateX(55deg) rotateZ(360deg)}}
+@keyframes semester-breathe{50%{transform:scale(1.18);opacity:.72}}
+@media(max-width:720px){
+  .semester-home{background-attachment:scroll}
+  .semester-nav{margin-left:-6%;margin-right:-6%;padding-left:6%;padding-right:6%}
+  .semester-scene:hover,.chapter-door:hover,.workbench-grid button:hover,.semester-resume:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .semester-home::before,.semester-brand>span,.semester-intro h1 em,.semester-scene::before,.book-halo,.semester-offline::after{animation:none!important}
+  .semester-scene,.chapter-door,.workbench-grid button,.semester-resume{transition:none!important}
+}
